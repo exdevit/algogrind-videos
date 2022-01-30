@@ -24,7 +24,11 @@ A programzoási nyelv meghatározásához használd a megfelelő label-eket!
 # Elérhetőségeink
 
 [AlgoGrind Weboldal](https://algogrind.hu/)
+
 [YouTube](https://www.youtube.com/channel/UC4Qa0LlM-yFwa6ffIKXmNCA)
+
 [TikTok](https://www.tiktok.com/@algogrind)
+
 [Instagram](https://www.instagram.com/algogrind/)
+
 [Facebook](https://www.facebook.com/algogrind/)
