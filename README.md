@@ -1,5 +1,5 @@
 # AlgoGrind videók és kódrészletek
-
+fdfs
 Ennek a reponak két célja van: 
 - szeretnénk, hogy a nézőink egyszerűen hozzáférhessenek bizonyos publikus kódrészletekhez, amiket a videóink során felhasználtunk
 - rendkívül sok videóötletünk van, viszont kíváncsiak vagyunk a ti ötleteitekre is
