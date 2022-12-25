@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Boldog Karácsonyt!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pushster&family=The+Nautigal:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --o-red-light: #fca5a5;
+        --o-red-dark: #dc2626;
+
+        --o-green-light: #86efac;
+        --o-green-dark: #15803d;
+
+        --trunk: #7c2d12;
+
+        --snow-light: #f5f5f4;
+        --snow-dark: #07131f;
+
+        --sky-light: #1d4a69;
+        --sky-dark: #07131f;
+
+        --gap: 8px;
+        --base-size: 45px;
+      }
+
+      body {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        height: 100vh;
+        background: radial-gradient(var(--sky-light) 20%, var(--sky-dark));
+        overflow: hidden;
+      }
+
+      h1 {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        color: white;
+        text-shadow: 0 0 8px rgba(0, 0, 0, 0.75);
+        width: 100vw;
+        top: 7rem;
+      }
+
+      h1 > span:first-child {
+        font-family: "Pushster", cursive;
+        font-size: 3.5rem;
+      }
+
+      h1 > span:last-child {
+        font-family: "The Nautigal", cursive;
+        font-size: 3.5rem;
+      }
+
+      .floor,
+      .floor::before,
+      .floor::after {
+        position: absolute;
+        background: radial-gradient(var(--snow-light), var(--snow-dark));
+        border-radius: 40rem;
+        box-shadow: 0 0 10px -6px rgba(0, 0, 0, 0.25);
+      }
+
+      .floor {
+        bottom: 0;
+        width: 200vw;
+        height: 33vh;
+      }
+
+      .floor::before {
+        content: "";
+        left: -100vw;
+        width: 200vw;
+        height: 40vh;
+        bottom: -11vh;
+      }
+
+      .floor::after {
+        content: "";
+        left: -100vw;
+        bottom: -25vh;
+        width: 400vw;
+        height: 45vh;
+      }
+
+      .tree {
+        position: relative;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        gap: calc(var(--gap) * 2);
+      }
+
+      .row {
+        display: flex;
+        gap: var(--gap);
+        justify-content: center;
+      }
+
+      .row > div {
+        position: relative;
+        width: var(--base-size);
+        height: var(--base-size);
+        border-radius: 2rem;
+        box-shadow: 0 0 10px -4px rgba(0, 0, 0, 0.75);
+      }
+
+      .row > div::before {
+        content: "";
+        position: absolute;
+        top: var(--gap);
+        left: var(--gap);
+        width: calc(var(--base-size) - var(--gap) * 2);
+        height: calc(var(--base-size) - var(--gap) * 2);
+        border-radius: 2rem;
+      }
+
+      .row > .right::before {
+        left: unset;
+        right: var(--gap);
+      }
+
+      .trunk {
+        background-color: var(--trunk);
+        transform: translateY(calc(-1 * (var(--gap) / 2)));
+      }
+
+      .red {
+        background-color: var(--o-red-dark);
+      }
+
+      .red::before {
+        background-color: var(--o-red-light);
+      }
+
+      .green {
+        background-color: var(--o-green-dark);
+      }
+
+      .green::before {
+        background-color: var(--o-green-light);
+      }
+
+      .row > .w-2 {
+        width: calc(var(--base-size) * 2 + var(--gap));
+      }
+
+      .row > .w-3 {
+        width: calc(var(--base-size) * 3 + var(--gap) * 2);
+      }
+
+      .row > .w-4 {
+        width: calc(var(--base-size) * 4 + var(--gap) * 3);
+      }
+
+      .row:nth-child(even) > div:nth-child(2n)::before {
+        animation: ornamentAnim 1.2s ease-in-out infinite;
+      }
+
+      .row:nth-child(even) > div:nth-child(2n + 1)::before {
+        animation: ornamentAnim 1.25s ease-in-out 0.15s infinite;
+      }
+
+      .row:nth-child(odd) > div:nth-child(2n)::before {
+        animation: ornamentAnim 1.15s ease-in-out 0.05s infinite;
+      }
+
+      .row:nth-child(odd) > div:nth-child(2n + 1)::before {
+        animation: ornamentAnim 1.35s ease-in-out infinite;
+      }
+
+      .snow-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        min-width: 100vw;
+        min-height: 100vh;
+      }
+
+      .snow-animation {
+        transform: translateY(-768px);
+        animation: fall 22.5s infinite linear;
+      }
+
+      .bottom {
+        animation-duration: 90s;
+      }
+
+      .middle {
+        animation-duration: 45s;
+      }
+
+      @keyframes fall {
+        to {
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes ornamentAnim {
+        0% {
+          transform: scale(0.5);
+        }
+
+        50% {
+          transform: scale(1);
+        }
+
+        100% {
+          transform: scale(0.5);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>
+      <span>Boldog Karácsonyt kíván</span>
+      <span>az AlgoGrind Csapata!</span>
+    </h1>
+    <div class="snow-wrapper">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 1300">
+        <g fill="#FFF" fill-opacity="0.1" class="snow-animation bottom">
+          <circle cx="200" cy="200" r="3" />
+          <circle cx="21" cy="436" r="3" />
+          <circle cx="547" cy="64" r="3" />
+          <circle cx="561" cy="561" r="3" />
+          <circle cx="1020" cy="431" r="3" />
+          <circle cx="454" cy="566" r="3" />
+          <circle cx="103" cy="853" r="3" />
+          <circle cx="835" cy="214" r="3" />
+          <circle cx="763" cy="547" r="3" />
+          <circle cx="53" cy="980" r="3" />
+          <circle cx="1000" cy="431" r="3" />
+          <circle cx="215" cy="1267" r="3" />
+          <circle cx="321" cy="654" r="3" />
+          <circle cx="54" cy="765" r="3" />
+          <circle cx="978" cy="987" r="3" />
+          <circle cx="543" cy="765" r="3" />
+          <circle cx="395" cy="324" r="3" />
+          <circle cx="5642" cy="943" r="3" />
+          <circle cx="626" cy="321" r="3" />
+          <circle cx="214" cy="564" r="3" />
+          <circle cx="32" cy="657" r="3" />
+        </g>
+        <g fill="#FFF" fill-opacity="0.25" class="snow-animation middle">
+          <circle cx="6" cy="1009" r="5" />
+          <circle cx="138" cy="1110" r="5" />
+          <circle cx="398" cy="1055" r="5" />
+          <circle cx="719" cy="1284" r="5" />
+          <circle cx="760" cy="1155" r="5" />
+          <circle cx="635" cy="1459" r="5" />
+          <circle cx="478" cy="1335" r="5" />
+          <circle cx="322" cy="1414" r="5" />
+          <circle cx="247" cy="1234" r="5" />
+          <circle cx="154" cy="1425" r="5" />
+          <circle cx="731" cy="773" r="5" />
+          <circle cx="599" cy="874" r="5" />
+          <circle cx="339" cy="819" r="5" />
+          <circle cx="239" cy="1004" r="5" />
+          <circle cx="113" cy="863" r="5" />
+          <circle cx="102" cy="1223" r="5" />
+          <circle cx="395" cy="1155" r="5" />
+          <circle cx="826" cy="943" r="5" />
+          <circle cx="626" cy="1054" r="5" />
+          <circle cx="887" cy="1366" r="5" />
+        </g>
+        <g fill="#FFF" fill-opacity="0.45" class="snow-animation">
+          <circle cx="8" cy="776" r="8" />
+          <circle cx="189" cy="925" r="8" />
+          <circle cx="548" cy="844" r="8" />
+          <circle cx="685" cy="1115" r="8" />
+          <circle cx="858" cy="909" r="8" />
+          <circle cx="874" cy="1438" r="8" />
+          <circle cx="657" cy="1256" r="8" />
+          <circle cx="443" cy="1372" r="8" />
+          <circle cx="339" cy="1107" r="8" />
+          <circle cx="24" cy="1305" r="8" />
+          <circle cx="8" cy="8" r="8" />
+          <circle cx="189" cy="157" r="8" />
+          <circle cx="548" cy="76" r="8" />
+          <circle cx="685" cy="347" r="8" />
+          <circle cx="858" cy="141" r="8" />
+          <circle cx="874" cy="670" r="8" />
+          <circle cx="657" cy="488" r="8" />
+          <circle cx="443" cy="604" r="8" />
+          <circle cx="339" cy="339" r="8" />
+          <circle cx="24" cy="537" r="8" />
+        </g>
+      </svg>
+    </div>
+    <div class="floor"></div>
+    <div class="tree">
+      <div class="row">
+        <div class="green"></div>
+      </div>
+      <div class="row">
+        <div class="red"></div>
+        <div class="green"></div>
+      </div>
+      <div class="row">
+        <div class="green"></div>
+        <div class="red right w-2"></div>
+      </div>
+      <div class="row">
+        <div class="green"></div>
+        <div class="green w-2"></div>
+        <div class="red"></div>
+      </div>
+      <div class="row">
+        <div class="red w-2"></div>
+        <div class="green right w-3"></div>
+      </div>
+      <div class="row">
+        <div class="green"></div>
+        <div class="red right w-3"></div>
+        <div class="green"></div>
+        <div class="red"></div>
+      </div>
+      <div class="row">
+        <div class="green w-4"></div>
+        <div class="green"></div>
+        <div class="red right w-2"></div>
+      </div>
+      <div class="row">
+        <div class="green"></div>
+        <div class="red right w-2"></div>
+        <div class="red"></div>
+        <div class="green w-2"></div>
+        <div class="red"></div>
+        <div class="green"></div>
+      </div>
+      <div class="row">
+        <div class="red w-2"></div>
+        <div class="green"></div>
+        <div class="red"></div>
+        <div class="green"></div>
+        <div class="green right w-3"></div>
+        <div class="red"></div>
+      </div>
+      <div class="row">
+        <div class="trunk w-2"></div>
+      </div>
+    </div>
+  </body>
+</html>
